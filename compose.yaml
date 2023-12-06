@@ -1,0 +1,17 @@
+services:
+  src:
+    build: .
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/code
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: process.env.DB_PASSWORD
+      POSTGRES_DB: seminariofinal
